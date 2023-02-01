@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定样式</title>
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .happy {
+            background-color: skyblue;
+        }
+        .sad {
+            background-color: orange;
+        }
+        .angre {
+            background-color: red;
+        }
+        .test1 {
+            color:pink;
+        }
+        .test2{
+            font-size: 24px;
+        }
+            </style>
+            <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 绑定class样式--字符串写法，适用于：样式类名不确定 -->
+        <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+    </div>
+</body>
+<script>
+new Vue({
+    el:'#root',
+    data:{
+        name:'许佳乐',
+        mood:'sad'
+    },
+    methods: {
+        changeMood(){
+         const arr = ['happy','sad','angre']
+        const index = Math.floor( Math.random()*3);
+        this.mood=arr[index];
+        }
+    },
+})
+</script>
+</html>

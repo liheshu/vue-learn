@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+<school></school>   
+<hr>
+<student></student>   
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    // 创建school组件
+    const school = Vue.extend({
+        // 一定不要写el配置项 因为最终所有的组件都将被vm管理，由vm决定服务哪个
+        template:
+        `<div>
+        <h1>家庭名称:{{schoolName}}</h1>
+        <h1>家庭地址:{{address}}</h1>
+        </div>`,
+        data(){
+         return {
+             schoolName:'白狗之窝',
+             address:'陕西省榆林市府谷县',
+    }
+ }
+    })
+    // student组件
+    const student = Vue.extend({
+        template: `<div>
+        <h1>学生姓名:{{studentName}}</h1>
+        <h1>学生年纪:{{age}}</h1>
+        </div>`,
+        data(){
+            return {
+                studentName:'白狗',
+                age:44
+        }
+    }
+})
+    // 创建vm
+    new Vue({
+        el:'#root',
+        // 组件注册（局部注册）
+        components:{
+            school:school,
+            student:student
+        }
+   
+    })
+</script>
+</html>
